@@ -20,6 +20,28 @@ El sistema está compuesto por varios microservicios y componentes de infraestru
 | `ms-keycloak-adapter` | Security Adapter | Módulo o adaptador para integrar la seguridad con Keycloak, gestionando la autenticación y autorización (OAuth2/OIDC). |
 | `bank-common`| Common Library | Módulo con clases de utilidad, DTOs o excepciones comunes compartidas entre los microservicios para evitar la duplicación de código (DRY). |
 
+## Estructura del Sistema
+```
+ms-bank-parent/
+├── .mvn/                              # Archivos del Maven Wrapper
+├── business-domain/                   # Contiene los microservicios con la lógica de negocio
+│   ├── bank-common/                   # Módulo con clases comunes (DTOs, Excepciones, etc.)
+│   ├── ms-bank-account/               # Microservicio para la gestión de Cuentas Bancarias
+│   ├── ms-customer/                   # Microservicio para la gestión de Clientes
+│   └── ms-keycloak-adapter/           # Módulo de adaptación para la seguridad con Keycloak
+│
+├── config-server-native/              # Repositorio de configuración para Spring Cloud Config
+│
+├── infrastructure-domain/             # Contiene los servicios de infraestructura y soporte
+│   ├── config-spring-cloud/           # Implementación del Spring Cloud Config Server
+│   ├── eureka-server/                 # Implementación del Servidor de Descubrimiento (Eureka)
+│   ├── spring-boot-admin/             # Implementación del Servidor de Monitoreo
+│   └── spring-gateway/                # Implementación del API Gateway
+│
+├── docker-compose.yml                 # Orquestador de contenedores para dependencias (BD, Keycloak, etc.)
+└── pom.xml                            # Archivo de build principal del proyecto padre (Maven)
+```
+
 ## Tecnologías Utilizadas
 
 * **Lenguaje:** Java 21+
@@ -46,3 +68,25 @@ Asegúrate de tener instalado lo siguiente:
 ```bash
 git clone https://github.com/diesgut/ms-bank-parent.git
 cd ms-bank-parent
+```
+
+### 2. Levantar Aplicacion
+#### 2.1 Ingresar a config-spring-cloud
+```bash
+mvn clean install
+cd ms-bank-parent
+mvn spring-boot:run
+```
+#### 2.2 Ingresar a eureka-server
+```bash
+mvn clean install
+cd ms-bank-parent
+mvn spring-boot:run
+```
+#### 2.3 Ingresar a spring-gateway
+```bash
+mvn clean install
+cd ms-bank-parent
+mvn spring-boot:run
+```
+#### 2.4 Levantar el resto de modulos
