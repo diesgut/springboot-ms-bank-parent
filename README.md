@@ -73,20 +73,20 @@ cd ms-bank-parent
 ### 2. Levantar Aplicacion
 #### 2.1 Ingresar a config-spring-cloud
 ```bash
+cd infrastructure-domain\config-spring-cloud
 mvn clean install
-cd ms-bank-parent
 mvn spring-boot:run
 ```
 #### 2.2 Ingresar a eureka-server
 ```bash
+cd infrastructure-domain\eureka-server
 mvn clean install
-cd ms-bank-parent
 mvn spring-boot:run
 ```
 #### 2.3 Ingresar a spring-gateway
 ```bash
+cd infrastructure-domain\spring-gateway
 mvn clean install
-cd ms-bank-parent
 mvn spring-boot:run
 ```
 #### 2.4 Levantar el resto de modulos

@@ -1,6 +1,6 @@
 activeProfileName: default
 server:
-    port: 0 #random port
+    port: 8082 #random port
     servlet:
         context-path: /bank-account-service
 spring:
@@ -56,6 +56,10 @@ management:
         web:
             exposure:
                 include: '*'
+    tracing:
+        sampling:
+            probability: 1.0 # 100% of requests will be traced
+        enabled: true #by default is true?
 logging:
     #config: classpath:log4j2-spring.xml
     level:

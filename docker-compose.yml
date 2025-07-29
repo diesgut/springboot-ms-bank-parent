@@ -31,5 +31,11 @@ services:
 # vamos a usuarios  creamos el usuario diesgut, vamos a credentials y asignamos contraseña diesgut, ponemos temporal en off, le asignamos el rol creado
 # vamos a cliente creamos uno de nombre "front-angular" y en protocolo dejamos con open id connect. Valid redirect URIs  lo dejamos con *
 # en client dependera de Client authentication  si enviamos o no el client_secret
+  zipkin:
+    image: openzipkin/zipkin:3.5.1
+    container_name: zipkin
+    ports:
+      # Expone el puerto de la UI y API de Zipkin en el host
+      - "9411:9411" # http://localhost:9411/zipkin/
 volumes:
   keycloak_data:
